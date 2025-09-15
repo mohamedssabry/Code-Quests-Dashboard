@@ -3,6 +3,7 @@ import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { Button } from "../../shared/components/atoms";
+import { Loader2 } from "lucide-react";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Email is required"),
@@ -22,12 +23,14 @@ export default function Login() {
   };
 
   return (
-    <div className="max-w-md w-full mx-auto p-6 bg-white rounded-lg 
+    <div
+      className="max-w-md w-full mx-auto p-6 bg-white rounded-lg 
       sm:max-w-sm sm:p-4 
       md:max-w-md md:p-6
       lg:max-w-lg
       flex flex-col justify-center  
-      ">
+      "
+    >
       <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
 
       <Formik
@@ -50,7 +53,6 @@ export default function Login() {
                 className="text-sm text-red-500 mt-1"
               />
             </div>
-
             <div>
               <Field
                 type="password"
@@ -64,14 +66,20 @@ export default function Login() {
                 className="text-sm text-red-500 mt-1"
               />
             </div>
-
             <Button
               type="submit"
               variant="primary"
-              className="w-full py-2 text-base sm:text-sm"
+              className="w-full py-2 text-base sm:text-sm flex items-center justify-center gap-2"
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Signing in..." : "Sign In"}
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  Signing in...
+                </>
+              ) : (
+                "Sign In"
+              )}
             </Button>
           </Form>
         )}
