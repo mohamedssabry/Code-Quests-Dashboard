@@ -10,7 +10,7 @@ State management is handled with **Redux Toolkit (RTK) and RTK Query**.
 
 1. Clone the repository
    git clone https://github.com/mohamedssabry/Code-Quests-Dashboard.git
-   cd Code-Quests-Dashboard
+   
    
    
 2. API Endpoint
